@@ -1,0 +1,58 @@
+.nav {
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.item svg {
+  opacity: 0.45;
+}
+
+/* tone="light" = light text, for dark page headers */
+.light {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.light a {
+  color: rgba(255, 255, 255, 0.72);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.light a:hover {
+  color: var(--gold-500);
+}
+
+.light [aria-current] {
+  color: var(--gold-500);
+}
+
+/* tone="dark" = dark text, for white surfaces */
+.dark {
+  color: var(--ink-400);
+}
+
+.dark a {
+  color: var(--ink-500);
+}
+
+.dark a:hover {
+  color: var(--navy-900);
+}
+
+.dark [aria-current] {
+  color: var(--gold-700);
+}

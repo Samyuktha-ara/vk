@@ -1,0 +1,152 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.label {
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-400);
+}
+
+.control {
+  position: relative;
+}
+
+/* ---- Trigger ------------------------------------------------------------- */
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--line-strong);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.trigger:hover,
+.triggerOpen {
+  border-bottom-color: var(--gold-600);
+}
+
+.value {
+  font-size: 0.9375rem;
+  color: var(--navy-900);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chevron {
+  width: 7px;
+  height: 7px;
+  margin-top: -4px;
+  border-right: 1px solid var(--ink-400);
+  border-bottom: 1px solid var(--ink-400);
+  transform: rotate(45deg);
+  flex: none;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.chevronOpen {
+  margin-top: 2px;
+  transform: rotate(-135deg);
+}
+
+/* ---- Panel --------------------------------------------------------------- */
+
+.list {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 40;
+  max-height: 268px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0.35rem 0;
+  background: var(--white);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--shadow-md);
+}
+
+/* The gold datum, carried through to the menu */
+.list::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gold-600);
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.65rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--ink-700);
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.optionActive {
+  background: var(--off-white);
+  color: var(--navy-900);
+  border-left-color: var(--gold-600);
+}
+
+.optionSelected {
+  color: var(--navy-900);
+  font-weight: 500;
+}
+
+.tick {
+  color: var(--gold-700);
+  flex: none;
+}
+
+/* ---- Scrollbar ----------------------------------------------------------- */
+
+.list::-webkit-scrollbar {
+  width: 3px;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+}
+
+/* ---- Dark surfaces ------------------------------------------------------- */
+
+.dark .label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.dark .trigger {
+  border-bottom-color: var(--line-navy);
+}
+
+.dark .value {
+  color: var(--white);
+}
+
+.dark .chevron {
+  border-color: rgba(255, 255, 255, 0.55);
+}

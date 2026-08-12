@@ -1,0 +1,114 @@
+/* ==========================================================================
+   DESIGN TOKENS
+   Every value in the visual system is derived from the brand logo palette.
+   Do not introduce colours outside this file.
+   ========================================================================== */
+
+:root {
+  /* ---- Brand core ------------------------------------------------------ */
+  --navy-900: #071a3d; /* Deep navy — logo midnight */
+  --navy-850: #08214b;
+  --navy-800: #0a2a5e;
+  --navy-700: #063f78; /* Royal blue */
+  --navy-600: #075a9e; /* Architectural blue */
+  --navy-500: #2d78b8;
+
+  --gold-700: #a87c17;
+  --gold-600: #c99724; /* Luxury gold */
+  --gold-500: #e6b63a; /* Bright gold */
+  --gold-200: #f0dcae;
+  --gold-050: #faf4e6;
+
+  --white: #ffffff;
+  --off-white: #f7f7f5; /* Soft off-white */
+  --charcoal: #171717;
+
+  /* ---- Neutrals (derived from navy, never pure grey) ------------------- */
+  --ink-900: #101828;
+  --ink-700: #333d52;
+  --ink-500: #5b667d;
+  --ink-400: #7d879b;
+  --ink-300: #a8b0bf;
+
+  --line: #e6e6e1; /* hairline on light */
+  --line-strong: #d5d5ce;
+  --line-navy: rgba(255, 255, 255, 0.14); /* hairline on navy */
+  --line-gold: rgba(201, 151, 36, 0.38);
+
+  /* ---- Surfaces -------------------------------------------------------- */
+  --surface: var(--white);
+  --surface-alt: var(--off-white);
+  --surface-dark: var(--navy-900);
+
+  /* ---- Typography ------------------------------------------------------ */
+  --font-display: "Cormorant Garamond", "Iowan Old Style", Georgia,
+    "Times New Roman", serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+
+  /* Editorial display scale — fluid, art-directed.
+     Tuned down from the first pass: at large viewports the previous ceiling
+     (7rem) overwhelmed the layout and pushed copy below the fold. Luxury
+     reads in the whitespace around the type, not the size of it. */
+  --fs-display-1: clamp(2.25rem, 4.6vw, 4.5rem);
+  --fs-display-2: clamp(1.9rem, 3.6vw, 3.4rem);
+  --fs-display-3: clamp(1.6rem, 2.6vw, 2.5rem);
+  --fs-display-4: clamp(1.3rem, 1.9vw, 1.75rem);
+
+  --fs-lead: clamp(1rem, 1.05vw, 1.125rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-label: 0.6875rem;
+
+  --lh-display: 0.98;
+  --lh-title: 1.16;
+  --lh-body: 1.72;
+
+  --ls-label: 0.2em;
+  --ls-display: -0.012em;
+
+  /* ---- Layout ---------------------------------------------------------- */
+  --container: 1440px;
+  --container-narrow: 1080px;
+  --gutter: clamp(1.25rem, 5vw, 5.5rem);
+  --nav-h: 84px;
+  --nav-h-compact: 66px;
+
+  /* ---- Rhythm ---------------------------------------------------------- */
+  --space-2xs: 0.375rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1.25rem;
+  --space-md: 2rem;
+  --space-lg: 3.5rem;
+  --space-xl: 5.5rem;
+  --section-y: clamp(3.5rem, 6.5vw, 6.5rem);
+  --section-y-tight: clamp(2.5rem, 4.5vw, 4.5rem);
+
+  /* ---- Depth (restrained) --------------------------------------------- */
+  --shadow-sm: 0 1px 2px rgba(7, 26, 61, 0.05);
+  --shadow-md: 0 18px 48px -28px rgba(7, 26, 61, 0.28);
+  --shadow-lg: 0 40px 90px -50px rgba(7, 26, 61, 0.42);
+
+  /* ---- Motion ---------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 220ms;
+  --dur: 480ms;
+  --dur-slow: 900ms;
+
+  --radius-none: 0px;
+  --radius-xs: 2px;
+  --radius-sm: 3px;
+
+  --z-nav: 900;
+  --z-fab: 940;
+  --z-overlay: 980;
+  --z-modal: 1000;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --nav-h: 68px;
+    --nav-h-compact: 60px;
+  }
+}

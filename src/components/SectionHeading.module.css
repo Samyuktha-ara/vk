@@ -1,0 +1,110 @@
+/* ---- Micro label --------------------------------------------------------- */
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0 0 clamp(1rem, 1.6vw, 1.5rem);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.index {
+  font-variant-numeric: tabular-nums;
+  color: var(--gold-600);
+}
+
+.dash {
+  width: 22px;
+  height: 1px;
+  background: var(--gold-600);
+  flex: none;
+}
+
+.label.dark {
+  color: var(--ink-500);
+}
+.label.light {
+  color: rgba(255, 255, 255, 0.62);
+}
+.label.light .index,
+.label.light .dash {
+  color: var(--gold-500);
+  background-color: var(--gold-500);
+}
+.label.light .index {
+  background: none;
+}
+
+/* ---- Header block -------------------------------------------------------- */
+
+.header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: clamp(1.5rem, 4vw, 4rem);
+}
+
+.main {
+  min-width: 0;
+}
+
+.heading {
+  font-size: var(--fs-display-2);
+  line-height: var(--lh-display);
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin: 0;
+}
+
+.t-dark .heading {
+  color: var(--navy-900);
+}
+.t-light .heading {
+  color: var(--white);
+}
+
+.standfirst {
+  max-width: 46ch;
+  margin-top: clamp(1rem, 1.5vw, 1.35rem);
+  font-size: var(--fs-lead);
+  line-height: 1.68;
+  font-weight: 300;
+}
+
+.t-dark .standfirst {
+  color: var(--ink-500);
+}
+.t-light .standfirst {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.aside {
+  padding-bottom: 0.5rem;
+}
+
+.center {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+}
+.center .label {
+  justify-content: center;
+}
+.center .standfirst {
+  margin-inline: auto;
+}
+
+@media (max-width: 900px) {
+  .header {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+  .aside {
+    padding-bottom: 0;
+  }
+}

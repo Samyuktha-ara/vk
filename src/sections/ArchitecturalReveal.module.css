@@ -1,0 +1,233 @@
+.section {
+  position: relative;
+  height: 220vh;
+  background: var(--off-white);
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   SETTING-OUT GRID
+   Every vertical identical in height and spacing — a drawing, not a graph.
+   ========================================================================== */
+
+.grid {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-between;
+  padding-inline: var(--gutter);
+  pointer-events: none;
+}
+
+.line {
+  display: block;
+  width: 1px;
+  height: 100%;
+  background: rgba(7, 26, 61, 0.09);
+  transform-origin: top center;
+  will-change: transform;
+}
+
+.lineGold {
+  background: rgba(201, 151, 36, 0.42);
+}
+
+/* ---- Datum: a level line struck across the sheet ------------------------- */
+
+.datum {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(201, 151, 36, 0.85) 0%,
+    rgba(201, 151, 36, 0.85) 62%,
+    rgba(201, 151, 36, 0) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.datum::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -2px;
+  width: 5px;
+  height: 5px;
+  background: var(--gold-600);
+}
+
+/* ---- Ground line --------------------------------------------------------- */
+
+.ground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(201, 151, 36, 0),
+    rgba(201, 151, 36, 0.7) 18%,
+    rgba(201, 151, 36, 0.7) 82%,
+    rgba(201, 151, 36, 0)
+  );
+}
+
+/* ==========================================================================
+   COMPOSITION
+   ========================================================================== */
+
+.frame {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.6fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  max-width: var(--container);
+  margin-inline: auto;
+  padding: calc(var(--nav-h) + 2rem) var(--gutter) clamp(2.5rem, 6vh, 5rem);
+}
+
+/* ---- Copy ---------------------------------------------------------------- */
+
+.copy {
+  min-width: 0;
+  will-change: transform;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: clamp(1.25rem, 2.4vw, 2.25rem);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-500);
+}
+
+.labelIndex {
+  color: var(--gold-600);
+  font-variant-numeric: tabular-nums;
+}
+
+.labelRule {
+  width: 22px;
+  height: 1px;
+  background: var(--gold-600);
+}
+
+.heading {
+  margin: 0;
+  max-width: 15ch;
+  font-size: clamp(2rem, 3.8vw, 3.75rem);
+  line-height: 0.98;
+  letter-spacing: -0.022em;
+  text-transform: uppercase;
+  color: var(--navy-900);
+}
+
+.body {
+  max-width: 42ch;
+  margin-top: clamp(1.5rem, 2.6vw, 2.5rem);
+  font-size: var(--fs-lead);
+  line-height: 1.8;
+  font-weight: 300;
+  color: var(--ink-500);
+}
+
+/* ---- Photograph ---------------------------------------------------------- */
+
+.visual {
+  position: relative;
+  justify-self: end;
+  width: 100%;
+  max-width: 460px;
+  height: min(64vh, 620px);
+}
+
+.visualClip {
+  height: 100%;
+  width: 100%;
+  will-change: clip-path;
+}
+
+.visualFrame {
+  height: 100%;
+  width: 100%;
+  aspect-ratio: auto !important;
+}
+
+/* A gold datum down the leading edge of the image */
+.visualRule {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -1px;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    rgba(201, 151, 36, 0),
+    rgba(201, 151, 36, 0.75) 30%,
+    rgba(201, 151, 36, 0.75)
+  );
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .section {
+    height: 190vh;
+  }
+
+  .frame {
+    grid-template-columns: 1fr;
+    align-content: center;
+  }
+
+  /* The photograph would crowd the type at this width — the drawing carries
+     the idea on its own. */
+  .visual {
+    display: none;
+  }
+
+  /* Fewer setting-out lines so the sheet stays legible */
+  .line:nth-child(even) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    height: auto;
+  }
+
+  .sticky {
+    position: static;
+    height: auto;
+    padding-block: var(--section-y);
+  }
+
+  .frame {
+    height: auto;
+    padding-block: 0;
+  }
+
+  .visual {
+    height: 52vh;
+  }
+}

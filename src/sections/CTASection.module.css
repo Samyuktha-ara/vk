@@ -1,0 +1,129 @@
+.section {
+  position: relative;
+  padding-block: clamp(3.5rem, 6.5vw, 6.5rem);
+  background: var(--navy-900);
+  color: var(--white);
+  overflow: hidden;
+}
+
+/* ---- Gold datum lines ---------------------------------------------------- */
+
+.lines {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 42%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(2.5rem, 7vw, 8rem);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.lines span {
+  display: block;
+  width: 1px;
+  height: calc(38% + (var(--i) % 4) * 18%);
+  background: linear-gradient(
+    to top,
+    rgba(201, 151, 36, 0.55),
+    rgba(201, 151, 36, 0)
+  );
+}
+
+/* ---- Content ------------------------------------------------------------- */
+
+.inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.heading {
+  margin: 0;
+  font-size: var(--fs-display-1);
+  line-height: 0.95;
+  letter-spacing: -0.022em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.heading > span:last-child {
+  color: var(--gold-500);
+}
+
+.body {
+  max-width: 46ch;
+  margin: clamp(1.75rem, 3vw, 2.5rem) auto 0;
+  font-size: var(--fs-lead);
+  line-height: 1.8;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-top: clamp(2.25rem, 4vw, 3.25rem);
+}
+
+/* ---- Direct contact ------------------------------------------------------ */
+
+.direct {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem 1.5rem;
+  margin-top: clamp(2rem, 3.5vw, 3rem);
+  padding-top: clamp(1.5rem, 2.4vw, 2rem);
+  border-top: 1px solid var(--line-navy);
+}
+
+.directLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.82);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.directLink:hover {
+  color: var(--gold-500);
+}
+
+.directLink svg {
+  color: var(--gold-500);
+}
+
+.divider {
+  width: 1px;
+  height: 12px;
+  background: var(--line-navy);
+}
+
+.hours {
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+@media (max-width: 560px) {
+  .actions > * {
+    width: 100%;
+  }
+  .divider {
+    display: none;
+  }
+  .direct {
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+}

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- PLACEHOLDER MARK — replace with the supplied logo artwork. -->
+  <rect width="64" height="64" fill="#071A3D"/>
+  <path d="M8 46 L32 12 L56 46" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linejoin="miter"/>
+  <path d="M20 46 L32 29 L44 46" fill="none" stroke="#075A9E" stroke-width="3.5" stroke-linejoin="miter"/>
+  <path d="M32 18 L37 27 H27 Z" fill="#E6B63A"/>
+  <rect x="6" y="52" width="52" height="2.5" fill="#C99724"/>
+</svg>

@@ -1,0 +1,220 @@
+.section {
+  background: var(--white);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(2.5rem, 7vw, 8rem);
+  align-items: start;
+}
+
+/* ==========================================================================
+   STATEMENT
+   ========================================================================== */
+
+.statement {
+  position: sticky;
+  top: calc(var(--nav-h) + 3rem);
+}
+
+.heading {
+  margin: 0;
+  font-size: var(--fs-display-2);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--navy-900);
+}
+
+/* The pay-off line carries the accent */
+.heading > span:last-child {
+  color: var(--gold-600);
+}
+
+.body {
+  max-width: 40ch;
+  margin-top: clamp(1.1rem, 1.8vw, 1.6rem);
+  font-size: var(--fs-lead);
+  line-height: 1.78;
+  font-weight: 300;
+  color: var(--ink-500);
+}
+
+.visual {
+  position: relative;
+  margin-top: clamp(1.5rem, 2.6vw, 2.25rem);
+  max-width: 420px;
+}
+
+.visualRule {
+  position: absolute;
+  left: -1px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--gold-600);
+}
+
+/* ==========================================================================
+   PRINCIPLES
+   ========================================================================== */
+
+.list {
+  /* One source of truth for the numbering column, so the expanded copy
+     always aligns to the title above it. */
+  --index-col: 2rem;
+  --index-gap: clamp(0.9rem, 1.8vw, 1.6rem);
+
+  border-top: 1px solid var(--line);
+}
+
+.item {
+  border-bottom: 1px solid var(--line);
+  transition:
+    background-color var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out);
+}
+
+.itemOpen {
+  background: linear-gradient(
+    to right,
+    rgba(247, 247, 245, 0.9),
+    rgba(247, 247, 245, 0)
+  );
+  /* Gold marker without a border, so nothing shifts when a panel opens. */
+  box-shadow: inset 2px 0 0 var(--gold-600);
+}
+
+.itemHead {
+  margin: 0;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  letter-spacing: normal;
+}
+
+.trigger {
+  display: grid;
+  grid-template-columns: var(--index-col) minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: var(--index-gap);
+  width: 100%;
+  padding: clamp(1.35rem, 2.4vw, 1.9rem) var(--index-gap)
+    clamp(1.35rem, 2.4vw, 1.9rem) var(--index-gap);
+  text-align: left;
+}
+
+.index {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--gold-600);
+  font-variant-numeric: tabular-nums;
+}
+
+.titleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.4vw, 1.95rem);
+  line-height: 1.15;
+  letter-spacing: 0.005em;
+  /* Headings stay one colour across the whole site — the open state is
+     signalled by the gold marker and the background, not by recolouring
+     the type. */
+  color: var(--navy-900);
+}
+
+.summary {
+  font-size: 0.8125rem;
+  letter-spacing: 0.03em;
+  color: var(--ink-400);
+}
+
+/* ---- Plus / minus -------------------------------------------------------- */
+
+.plus {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  align-self: center;
+  flex: none;
+}
+
+.plus span {
+  position: absolute;
+  background: var(--navy-900);
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.plus span:first-child {
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+}
+
+.plus span:last-child {
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+}
+
+.itemOpen .plus span:last-child {
+  transform: scaleY(0);
+}
+
+/* ---- Detail -------------------------------------------------------------- */
+
+.detailWrap {
+  overflow: hidden;
+}
+
+.detail {
+  max-width: 56ch;
+  margin: 0;
+  /* Aligns exactly with the title: index column + its gap + the trigger's
+     own left padding. */
+  padding: 0 var(--index-gap) clamp(1.6rem, 2.6vw, 2.1rem)
+    calc(var(--index-col) + var(--index-gap) * 2);
+  font-size: 1rem;
+  line-height: 1.8;
+  font-weight: 300;
+  color: var(--ink-500);
+}
+
+.cta {
+  padding-top: clamp(2rem, 3.5vw, 2.75rem);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 1000px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .statement {
+    position: static;
+  }
+
+  .visual {
+    max-width: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .detail {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

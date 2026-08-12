@@ -1,0 +1,193 @@
+.section {
+  background: var(--white);
+}
+
+.head {
+  max-width: 62ch;
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.statement {
+  font-size: var(--fs-display-4);
+  line-height: 1.3;
+  color: var(--navy-900);
+  font-weight: 400;
+}
+
+.statement span {
+  color: var(--ink-400);
+}
+
+.topRule {
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+/* ---- Grid ---------------------------------------------------------------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+}
+
+.item {
+  position: relative;
+  padding: 0 clamp(1rem, 2.4vw, 2.5rem);
+}
+
+.item:first-child {
+  padding-left: 0;
+}
+
+.item:last-child {
+  padding-right: 0;
+}
+
+/* Thin gold dividers — no cards, no boxes */
+.item + .item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+  bottom: 0.35rem;
+  width: 1px;
+  background: var(--line);
+}
+
+.label {
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--ink-400);
+}
+
+.valueWrap {
+  margin: 0.75rem 0 0;
+}
+
+.value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.2vw, 3.85rem);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  color: var(--navy-900);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.placeholder {
+  color: var(--ink-300);
+}
+
+.suffix {
+  color: var(--gold-600);
+  font-size: 0.5em;
+  vertical-align: super;
+  letter-spacing: 0;
+  margin-left: 0.06em;
+}
+
+.caption {
+  margin-top: 0.9rem;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--ink-400);
+  max-width: 22ch;
+}
+
+/* ---- Disclosure ---------------------------------------------------------- */
+
+.note {
+  max-width: 58ch;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding-top: 1.35rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.75rem;
+  line-height: 1.75;
+  letter-spacing: 0.02em;
+  color: var(--ink-400);
+}
+
+/* ---- Credentials --------------------------------------------------------- */
+
+.credentials {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--gold-700);
+}
+
+.credentialList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2.25rem;
+  font-size: 0.8125rem;
+  color: var(--ink-700);
+}
+
+.credentialList li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.credLabel {
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-400);
+}
+
+/* ---- Responsive ---------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(2.25rem, 6vw, 3rem) 0;
+  }
+
+  .item {
+    padding-inline: clamp(1rem, 4vw, 2rem);
+  }
+
+  .item:nth-child(odd) {
+    padding-left: 0;
+  }
+  .item:nth-child(even) {
+    padding-right: 0;
+  }
+  .item:nth-child(odd)::before {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .item {
+    padding: 1.6rem 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .item:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .item + .item::before {
+    display: none;
+  }
+
+  .caption {
+    max-width: none;
+  }
+}

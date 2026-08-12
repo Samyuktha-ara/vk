@@ -1,0 +1,36 @@
+.section {
+  background: var(--white);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: clamp(2rem, 3.5vw, 3.5rem) clamp(1.5rem, 2.6vw, 2.75rem);
+  margin-top: clamp(2rem, 3.5vw, 3.5rem);
+}
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem 3rem;
+  margin-top: clamp(2.5rem, 4vw, 4rem);
+  padding-top: clamp(1.5rem, 2.4vw, 2rem);
+  border-top: 1px solid var(--line);
+}
+
+.footNote {
+  max-width: 48ch;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  font-weight: 300;
+  color: var(--ink-400);
+}
+
+@media (max-width: 700px) {
+  .foot {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

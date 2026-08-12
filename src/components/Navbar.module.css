@@ -1,0 +1,369 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-nav);
+  transition:
+    background-color var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out),
+    backdrop-filter var(--dur) var(--ease-out);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 3rem);
+  height: var(--nav-h);
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  transition: height var(--dur) var(--ease-out);
+}
+
+.compact .inner {
+  height: var(--nav-h-compact);
+}
+
+.hairline {
+  display: block;
+  height: 1px;
+  background: var(--line);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.solid {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: saturate(180%) blur(14px);
+}
+
+.solid .hairline {
+  transform: scaleX(1);
+}
+
+.compact.solid {
+  box-shadow: 0 1px 24px -12px rgba(7, 26, 61, 0.28);
+}
+
+.transparent {
+  background: transparent;
+}
+
+/* Keeps the lockup legible over a photograph without a heavy scrim */
+.transparent::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(7, 26, 61, 0.55),
+    rgba(7, 26, 61, 0)
+  );
+}
+
+.menuOpen {
+  background: transparent;
+}
+.menuOpen::before {
+  opacity: 0;
+}
+.menuOpen .hairline {
+  transform: scaleX(0);
+}
+
+.brand {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+}
+
+/* ---- Desktop links -------------------------------------------------------- */
+
+.links {
+  justify-self: center;
+  min-width: 0;
+}
+
+.linkList {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: clamp(0.9rem, 1.7vw, 1.9rem);
+}
+
+.link {
+  position: relative;
+  display: inline-block;
+  padding: 0.4rem 0;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--ink-700);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.transparent .link {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--gold-600);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.link:hover {
+  color: var(--navy-900);
+}
+.transparent .link:hover {
+  color: var(--white);
+}
+
+.link:hover::after,
+.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.active {
+  color: var(--navy-900);
+}
+.transparent .active {
+  color: var(--white);
+}
+
+/* ---- Actions -------------------------------------------------------------- */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 1.6vw, 1.6rem);
+  position: relative;
+  z-index: 2;
+}
+
+.phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  color: var(--ink-500);
+  white-space: nowrap;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.phone:hover {
+  color: var(--gold-700);
+}
+
+.transparent .phone {
+  color: rgba(255, 255, 255, 0.8);
+}
+.transparent .phone:hover {
+  color: var(--gold-500);
+}
+
+/* ---- Menu toggle ---------------------------------------------------------- */
+
+.toggle {
+  display: none;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0;
+  color: var(--navy-900);
+}
+
+.transparent .toggle,
+.menuOpen .toggle {
+  color: var(--white);
+}
+
+.toggleLabel {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.bars {
+  display: grid;
+  gap: 5px;
+  width: 24px;
+}
+
+.bar {
+  display: block;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.menuOpen .bar:first-child {
+  transform: translateY(3px) rotate(11deg);
+}
+.menuOpen .bar:last-child {
+  transform: translateY(-3px) rotate(-11deg);
+}
+
+/* ---- Mobile panel --------------------------------------------------------- */
+
+.panel {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  background: var(--navy-900);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.panelInner {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: calc(var(--nav-h) + 2.5rem) var(--gutter) 2.75rem;
+}
+
+.panelLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 2.75rem;
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.dot {
+  width: 3px;
+  height: 3px;
+  background: var(--gold-500);
+  flex: none;
+}
+
+.panelList {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line-navy);
+}
+
+.panelLink {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1.15rem 0;
+  border-bottom: 1px solid var(--line-navy);
+  color: var(--white);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.panelLink:hover {
+  color: var(--gold-500);
+}
+
+.panelIndex {
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--gold-500);
+  font-variant-numeric: tabular-nums;
+}
+
+.panelText {
+  flex: 1;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 8vw, 2.75rem);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.panelLink svg {
+  align-self: center;
+  opacity: 0.45;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.panelLink:hover svg {
+  transform: translate(3px, -3px);
+  opacity: 1;
+}
+
+.panelFoot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.15rem;
+  margin-top: auto;
+  padding-top: 2.75rem;
+}
+
+.panelAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+  padding: 0.55rem 0;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.panelAction:hover {
+  color: var(--gold-500);
+}
+
+.panelFoot > :global(a[class*="base"]) {
+  flex-basis: 100%;
+}
+
+/* ---- Breakpoints ---------------------------------------------------------- */
+
+@media (max-width: 1340px) {
+  .links {
+    display: none;
+  }
+  .inner {
+    grid-template-columns: auto 1fr;
+  }
+  .actions {
+    justify-self: end;
+  }
+  .toggle {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 1100px) {
+  .phone span {
+    display: none;
+  }
+  .phone {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .cta {
+    display: none;
+  }
+}

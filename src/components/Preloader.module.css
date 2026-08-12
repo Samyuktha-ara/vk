@@ -1,0 +1,82 @@
+.screen {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+  background: var(--navy-900);
+  will-change: clip-path;
+}
+
+/* The gold datum, top and bottom, so the curtain reads as brand not chrome */
+.screen::before,
+.screen::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(201, 151, 36, 0),
+    rgba(201, 151, 36, 0.7) 20%,
+    rgba(201, 151, 36, 0.7) 80%,
+    rgba(201, 151, 36, 0)
+  );
+}
+
+.screen::before {
+  top: 0;
+}
+
+.screen::after {
+  bottom: 0;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.75rem, 4vw, 2.75rem);
+  padding-inline: var(--gutter);
+}
+
+/* The intro has the whole viewport — the mark can be far larger here than in
+   the navigation. Targets the element rather than the scoped class, since the
+   markup belongs to the Logo module. */
+.logo img,
+.logo svg {
+  height: clamp(72px, 12vw, 104px);
+}
+
+.logo span {
+  font-size: 1.05rem;
+}
+
+.motto {
+  margin-top: -0.75rem;
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--gold-500);
+}
+
+/* ---- Progress ------------------------------------------------------------ */
+
+.track {
+  display: block;
+  width: clamp(120px, 22vw, 220px);
+  height: 1px;
+  background: rgba(255, 255, 255, 0.14);
+  overflow: hidden;
+}
+
+.bar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--gold-500);
+  transform-origin: left center;
+}

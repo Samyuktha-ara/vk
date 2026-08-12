@@ -1,0 +1,72 @@
+.fab {
+  position: fixed;
+  right: clamp(1rem, 2.5vw, 2rem);
+  bottom: clamp(1rem, 2.5vw, 2rem);
+  z-index: var(--z-fab);
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  height: 52px;
+  padding: 0 16px;
+  background: var(--navy-900);
+  color: var(--white);
+  border: 1px solid rgba(201, 151, 36, 0.55);
+  box-shadow: 0 14px 34px -18px rgba(7, 26, 61, 0.7);
+  overflow: hidden;
+  transition:
+    gap var(--dur) var(--ease-out),
+    padding var(--dur) var(--ease-out),
+    border-color var(--dur) var(--ease-out),
+    background-color var(--dur) var(--ease-out);
+}
+
+.fab svg {
+  flex: none;
+  color: var(--gold-500);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.label {
+  max-width: 0;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  transition:
+    max-width var(--dur) var(--ease-out),
+    opacity var(--dur) var(--ease-out);
+}
+
+.fab:hover,
+.fab:focus-visible {
+  gap: 0.7rem;
+  background: var(--navy-800);
+  border-color: var(--gold-500);
+}
+
+.fab:hover .label,
+.fab:focus-visible .label {
+  max-width: 220px;
+  opacity: 1;
+}
+
+/* On touch screens there is no hover — show the label from the start. */
+@media (hover: none) {
+  .fab {
+    gap: 0.6rem;
+  }
+  .label {
+    max-width: 220px;
+    opacity: 1;
+  }
+}
+
+/* Keep clear of the sticky enquiry bar on small screens. */
+@media (max-width: 900px) {
+  .fab {
+    bottom: calc(72px + 0.75rem);
+  }
+}

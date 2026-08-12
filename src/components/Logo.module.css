@@ -1,0 +1,110 @@
+.lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  line-height: 1;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.mark,
+.suppliedMark {
+  width: auto;
+  height: 48px;
+  flex: none;
+  transition: height var(--dur) var(--ease-out);
+}
+
+.suppliedMark {
+  object-fit: contain;
+}
+
+.compact .mark,
+.compact .suppliedMark {
+  height: 40px;
+}
+
+.words {
+  display: flex;
+  flex-direction: column;
+  gap: 0.32rem;
+  min-width: 0;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: font-size var(--dur) var(--ease-out);
+}
+
+.compact .name {
+  font-size: 0.82rem;
+}
+
+.tagline {
+  font-size: 0.5625rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.compact .tagline {
+  display: none;
+}
+
+/* ---- Variants ------------------------------------------------------------ */
+
+.dark .name {
+  color: var(--navy-900);
+}
+.dark .tagline {
+  color: var(--ink-400);
+}
+.dark .strokeDeep {
+  stroke: var(--navy-900);
+}
+.dark .strokeRoyal {
+  stroke: var(--navy-600);
+}
+
+.light .name {
+  color: var(--white);
+}
+.light .tagline {
+  color: rgba(255, 255, 255, 0.55);
+}
+.light .strokeDeep {
+  stroke: var(--white);
+}
+.light .strokeRoyal {
+  stroke: var(--navy-500);
+}
+
+.strokeGold {
+  stroke: var(--gold-600);
+}
+.fillGold {
+  fill: var(--gold-500);
+}
+
+/* The tagline is the first thing to go — it costs the most horizontal room
+   and the nav links need it before the lockup does. */
+@media (max-width: 1340px) {
+  .tagline {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .mark,
+  .suppliedMark {
+    height: 38px;
+  }
+  .name {
+    font-size: 0.8rem;
+  }
+}

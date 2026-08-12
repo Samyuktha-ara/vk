@@ -1,0 +1,315 @@
+.card {
+  position: relative;
+}
+
+.link {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 4.5rem);
+  align-items: center;
+  /* Rendered as a <button> — reset the parts a button brings with it. */
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+
+/* ==========================================================================
+   WIDE — alternating editorial rows
+   ========================================================================== */
+
+.wide .link {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+}
+
+.wide.reversed .link {
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+}
+
+.wide.reversed .visual {
+  order: 2;
+}
+
+/* ==========================================================================
+   GRID — index page columns
+   ========================================================================== */
+
+.grid .link {
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* ==========================================================================
+   VISUAL
+   ========================================================================== */
+
+.visual {
+  position: relative;
+  overflow: hidden;
+}
+
+.frame {
+  background: var(--navy-900);
+}
+
+.img {
+  transition: transform 1.5s var(--ease-out);
+}
+
+.link:hover .img,
+.link:focus-visible .img {
+  transform: scale(1.055);
+}
+
+/* A navy veil that lifts on hover */
+.visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(7, 26, 61, 0.5) 0%,
+    rgba(7, 26, 61, 0.06) 45%,
+    rgba(7, 26, 61, 0) 70%
+  );
+  opacity: 0.9;
+  transition: opacity var(--dur-slow) var(--ease-out);
+}
+
+.link:hover .visual::after {
+  opacity: 0.55;
+}
+
+/* Editorial numbering laid onto the frame */
+.index {
+  position: absolute;
+  top: clamp(0.9rem, 1.6vw, 1.5rem);
+  left: clamp(0.9rem, 1.6vw, 1.5rem);
+  z-index: 2;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.4vw, 2.2rem);
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.72);
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.index::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin-top: 0.4rem;
+  background: var(--gold-500);
+  transform: scaleX(0.4);
+  transform-origin: left;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.link:hover .index::after {
+  transform: scaleX(1);
+}
+
+/* ---- Status pill --------------------------------------------------------- */
+
+.status {
+  position: absolute;
+  right: clamp(0.9rem, 1.6vw, 1.5rem);
+  bottom: clamp(0.9rem, 1.6vw, 1.5rem);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  background: rgba(255, 255, 255, 0.94);
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--navy-900);
+  backdrop-filter: blur(6px);
+}
+
+.statusDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.ongoing .statusDot {
+  background: var(--gold-600);
+  box-shadow: 0 0 0 3px rgba(201, 151, 36, 0.22);
+}
+.upcoming .statusDot {
+  background: var(--navy-600);
+  box-shadow: 0 0 0 3px rgba(7, 90, 158, 0.18);
+}
+.done .statusDot {
+  background: var(--ink-300);
+}
+
+/* ==========================================================================
+   BODY
+   ========================================================================== */
+
+.body {
+  min-width: 0;
+}
+
+.type {
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--gold-700);
+}
+
+.name {
+  margin-top: 0.5rem;
+  font-size: var(--fs-display-3);
+  line-height: 1.06;
+  letter-spacing: -0.015em;
+  color: var(--navy-900);
+  text-transform: uppercase;
+}
+
+.grid .name {
+  font-size: clamp(1.5rem, 2.1vw, 1.95rem);
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.85rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-400);
+}
+
+.location svg {
+  color: var(--gold-600);
+  flex: none;
+}
+
+.tagline {
+  max-width: 42ch;
+  margin-top: clamp(1rem, 1.8vw, 1.5rem);
+  font-size: 1rem;
+  line-height: 1.75;
+  font-weight: 300;
+  color: var(--ink-500);
+}
+
+.grid .tagline {
+  font-size: 0.9375rem;
+  margin-top: 0.9rem;
+}
+
+/* ---- Facts --------------------------------------------------------------- */
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 clamp(1.5rem, 3vw, 3rem);
+  margin: clamp(1.5rem, 2.6vw, 2.25rem) 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.fact dt {
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-400);
+}
+
+.fact dd {
+  margin: 0.4rem 0 0;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--navy-900);
+  white-space: nowrap;
+}
+
+.grid .facts {
+  gap: 0 1.5rem;
+}
+.grid .fact dd {
+  font-size: 1.05rem;
+}
+
+/* ---- CTA ----------------------------------------------------------------- */
+
+.cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: clamp(1.5rem, 2.6vw, 2.25rem);
+  padding-bottom: 0.7rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+  color: var(--navy-900);
+}
+
+.cta svg {
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.link:hover .cta svg {
+  transform: translateX(6px);
+}
+
+.ctaRule {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--gold-600);
+  transform: scaleX(0.3);
+  transform-origin: left;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.link:hover .ctaRule,
+.link:focus-visible .ctaRule {
+  transform: scaleX(1);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .wide .link,
+  .wide.reversed .link {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .wide.reversed .visual {
+    order: 0;
+  }
+
+  .name {
+    font-size: clamp(1.75rem, 6.5vw, 2.4rem);
+  }
+
+  .fact dd {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .facts {
+    gap: 1.1rem 1.75rem;
+  }
+}
