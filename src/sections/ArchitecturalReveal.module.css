@@ -211,6 +211,25 @@
   }
 }
 
+/* Static composition — reduced motion, and phones/tablets where a pinned,
+   scroll-scrubbed section feels like the page has frozen. */
+@media (max-width: 900px) {
+  .section {
+    height: auto;
+  }
+
+  .sticky {
+    position: static;
+    height: auto;
+    padding-block: var(--section-y);
+  }
+
+  .frame {
+    height: auto;
+    padding-block: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .section {
     height: auto;

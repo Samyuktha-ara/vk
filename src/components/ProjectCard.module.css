@@ -128,7 +128,6 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--navy-900);
-  backdrop-filter: blur(6px);
 }
 
 .statusDot {

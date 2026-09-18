@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useMotionTemplate, useScroll, useSpring, useTransform } from "framer-motion";
 import { useReducedMotion } from "../hooks/useReducedMotion";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 
 import Media from "../components/Media";
 import media from "../data/media";
@@ -21,7 +22,7 @@ import styles from "./ArchitecturalReveal.module.css";
    architecture — that is the difference between a drawing and a graph.
 
    Cost: one scroll listener, transforms and clip-path only, and a static
-   composition under prefers-reduced-motion.
+   composition under prefers-reduced-motion and on screens ≤ 900px.
    ========================================================================== */
 
 const GRID_LINES = 13;
@@ -30,7 +31,11 @@ const GOLD_LINES = new Set([3, 9]);
 
 export default function ArchitecturalReveal() {
   const sectionRef = useRef(null);
-  const reduced = useReducedMotion();
+  /* On phones the pinned, scroll-scrubbed sheet reads as the page freezing
+     (and the photograph is hidden there anyway), so small screens get the
+     same static composition as reduced motion. */
+  const compact = useMediaQuery("(max-width: 900px)");
+  const reduced = useReducedMotion() || compact;
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,

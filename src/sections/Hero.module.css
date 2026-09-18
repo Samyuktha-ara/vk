@@ -381,8 +381,7 @@
 
   .spotlightLink {
     padding: 1.1rem var(--gutter);
-    background: rgba(7, 26, 61, 0.86);
-    backdrop-filter: blur(10px);
+    background: rgba(7, 26, 61, 0.94);
   }
 }
 

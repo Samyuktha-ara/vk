@@ -40,6 +40,15 @@
   backdrop-filter: saturate(180%) blur(14px);
 }
 
+/* Frosted glass on a fixed bar repaints on every scroll frame — too costly
+   on phones, so go opaque there. */
+@media (max-width: 900px) {
+  .solid {
+    background: #fff;
+    backdrop-filter: none;
+  }
+}
+
 .solid .hairline {
   transform: scaleX(1);
 }
