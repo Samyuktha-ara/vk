@@ -40,13 +40,14 @@ export const business = {
     phoneDisplay: "+91 80154 31488",
     phoneHref: "+918015431488",
     whatsappNumber: "918015431488", // country code + number, digits only
-    email: "enquiries@vkestates.in",
+    email: "vkrealestateandpromoters@gmail.com",
     officeHours: "Monday – Saturday, 9:30 AM – 7:00 PM",
-    /* Where the enquiry form POSTs its JSON payload.
-       While null, the form validates and then hands the enquiry off to
-       WhatsApp (or email) so no lead is ever silently dropped into a form
-       that goes nowhere. Set this to your CRM / serverless endpoint. */
-    formEndpoint: null,
+    /* Web3Forms access key (https://web3forms.com). Enquiries are emailed to
+       the address the key was created with. The key is safe to publish — it
+       can only send to that one inbox.
+       While null, the form hands the enquiry off to WhatsApp instead, so no
+       lead is ever silently dropped. */
+    web3formsKey: "268f5492-38ed-4f25-a684-68bcca7bdc45",
   },
 
   /* ---- Address (used for LocalBusiness structured data) ---------------- */

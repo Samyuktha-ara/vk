@@ -27,7 +27,7 @@ const EMPTY = {
  * Six fields, because a seventh costs conversions. Validation runs on blur and
  * on submit, errors are announced, and every field is properly labelled.
  *
- * With no `formEndpoint` configured the validated enquiry is handed to
+ * With no `web3formsKey` configured the validated enquiry is handed to
  * WhatsApp rather than posted into a void — see data/business.js.
  */
 export default function ContactForm({ context = "", compact = false, onSuccess }) {
@@ -106,9 +106,9 @@ export default function ContactForm({ context = "", compact = false, onSuccess }
 
     setStatus("sending");
 
-    const endpoint = business.contact.formEndpoint;
+    const accessKey = business.contact.web3formsKey;
 
-    if (!endpoint) {
+    if (!accessKey) {
       /* No backend wired yet — hand the enquiry to WhatsApp so it reaches a
          human rather than disappearing. */
       window.open(
@@ -124,12 +124,25 @@ export default function ContactForm({ context = "", compact = false, onSuccess }
     }
 
     try {
-      const response = await fetch(endpoint, {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...values, source: "website", context }),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `New website enquiry — ${values.name}${values.interest ? ` (${values.interest})` : ""}`,
+          from_name: business.brand.name,
+          Name: values.name,
+          Phone: values.phone,
+          Email: values.email || "—",
+          "Interested in": values.interest || "Not sure yet",
+          Budget: values.budget || "Not stated",
+          Message: values.message || "—",
+          Page: context || "General enquiry",
+          ...(values.email && { replyto: values.email }),
+        }),
       });
-      if (!response.ok) throw new Error("Request failed");
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || result.success === false) throw new Error("Request failed");
       setStatus("done");
       onSuccess?.(values);
     } catch {
