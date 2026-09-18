@@ -1,6 +1,6 @@
-# Netlify SPA fallback.
-# The app routes on the client (BrowserRouter), so every path has to be served
-# the same index.html and let React Router decide. Without this, a visitor who
-# reloads on /privacy-policy or lands there from a link gets Netlify's 404
-# instead of the page. 200 = rewrite, not a redirect: the URL stays intact.
-/*  /index.html  200
+# Netlify routing.
+# Every route is prerendered to its own index.html at build time
+# (scripts/prerender.mjs), so /privacy-policy and /terms are served as real
+# files. Anything else gets the prerendered 404 page with a genuine 404
+# status, so search engines never index a missing URL as a live page.
+/*  /404.html  404

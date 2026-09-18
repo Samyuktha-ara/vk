@@ -18,7 +18,7 @@ export default function NotFound() {
 
       <section className={`on-dark ${styles.page}`}>
         <div className={styles.visual} aria-hidden="true">
-          <Media image={media.glassGeometry} ratio={16 / 9} priority sizes="100vw" className={styles.frame} />
+          <Media image={media.land} ratio={16 / 9} priority sizes="100vw" className={styles.frame} />
           <span className={styles.scrim} />
         </div>
 

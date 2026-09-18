@@ -37,9 +37,9 @@ export const business = {
   /* ---- Contact --------------------------------------------------------- */
   contact: {
     /* TODO(client): replace with live numbers before launch. */
-    phoneDisplay: "+91 90000 00000",
-    phoneHref: "+919000000000",
-    whatsappNumber: "919000000000", // country code + number, digits only
+    phoneDisplay: "+91 80154 31488",
+    phoneHref: "+918015431488",
+    whatsappNumber: "918015431488", // country code + number, digits only
     email: "enquiries@vkestates.in",
     officeHours: "Monday – Saturday, 9:30 AM – 7:00 PM",
     /* Where the enquiry form POSTs its JSON payload.
@@ -85,11 +85,12 @@ export const business = {
   site: {
     /* TODO(client): set the production origin — used for canonicals,
        Open Graph URLs, sitemap.xml and JSON-LD. No trailing slash. */
-    url: "https://www.vkestates.in",
+    url: "https://www.vkrealestateandpromoters.in",
     locale: "en_IN",
     language: "en-IN",
     twitterHandle: null,
-    defaultOgImage: "/og-default.jpg", // 1200×630 — add to /public
+    defaultOgImage: "/photos/house-1-wide-1280.jpg", // real photo; swap for a dedicated 1200×630 crop if desired
+    defaultOgImageSize: { width: 1280, height: 853 },
   },
 
   /* ---- Content switches ------------------------------------------------ */

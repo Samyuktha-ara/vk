@@ -26,7 +26,9 @@ export default function ProjectCard({
 }) {
   const { openEnquiry } = useChrome();
   const price = formatINR(project.priceFrom);
+  const rate = formatINR(project.priceRate?.value);
   const area = formatRange(project.area?.min, project.area?.max, project.area?.unit);
+  const place = [project.locality, project.city].filter(Boolean).join(", ");
 
   return (
     <article
@@ -42,7 +44,7 @@ export default function ProjectCard({
         type="button"
         className={styles.link}
         onClick={() => openEnquiry(project.name)}
-        aria-label={`${project.name} — ${project.type} in ${project.locality}, ${project.city}. Request details.`}
+        aria-label={`${project.name} — ${project.type} in ${place}. Request details.`}
       >
         <div className={styles.visual}>
           <Media
@@ -70,7 +72,7 @@ export default function ProjectCard({
 
           <p className={styles.location}>
             <MapPin size={13} aria-hidden="true" />
-            {project.locality}, {project.city}
+            {place}
           </p>
 
           <p className={styles.tagline}>{project.tagline}</p>
@@ -78,8 +80,16 @@ export default function ProjectCard({
           <dl className={styles.facts}>
             {price && (
               <div className={styles.fact}>
-                <dt>From</dt>
+                <dt>{project.priceLabel ?? "From"}</dt>
                 <dd>{price}</dd>
+              </div>
+            )}
+            {rate && (
+              <div className={styles.fact}>
+                <dt>Rate</dt>
+                <dd>
+                  {rate} / {project.priceRate.unit}
+                </dd>
               </div>
             )}
             {area && (
@@ -97,6 +107,10 @@ export default function ProjectCard({
               </div>
             )}
           </dl>
+
+          {project.priceNote && (price || rate) && (
+            <p className={styles.priceNote}>{project.priceNote}</p>
+          )}
 
           <span className={styles.cta}>
             <span className={styles.ctaLabel}>Request Details</span>

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { animate, useInView, useReducedMotion } from "framer-motion";
+import { animate, useInView } from "framer-motion";
+import { useReducedMotion } from "../hooks/useReducedMotion";
 import { ShieldCheck } from "lucide-react";
 
 import { Reveal, GoldRule } from "../components/Reveal";
@@ -107,7 +108,9 @@ function Figure({ value, suffix = "" }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, amount: 0.6 });
   const reduced = useReducedMotion();
-  const [counted, setCounted] = useState(0);
+  /* Starts at the real figure so the prerendered HTML (what crawlers read)
+     carries the number; the count-up from zero begins once it scrolls into view. */
+  const [counted, setCounted] = useState(value);
 
   useEffect(() => {
     if (typeof value !== "number" || !inView || reduced) return undefined;

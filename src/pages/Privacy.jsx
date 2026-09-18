@@ -124,10 +124,9 @@ export default function Privacy() {
             <Reveal as="section" className={styles.section}>
               <h2 data-index="08">External links</h2>
               <p>
-                This site links to third-party services including Google Maps,
-                WhatsApp and — while placeholder photography remains in place —
-                an external image host. Those services have their own privacy
-                practices, which we do not control.
+                This site links to third-party services including Google Maps
+                and WhatsApp. Those services have their own privacy practices,
+                which we do not control.
               </p>
             </Reveal>
 

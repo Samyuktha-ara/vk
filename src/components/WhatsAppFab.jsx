@@ -1,4 +1,5 @@
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { useReducedMotion } from "../hooks/useReducedMotion";
 import { MessageCircle } from "lucide-react";
 
 import { useScrollState } from "../hooks/useScrollState";

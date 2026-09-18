@@ -34,7 +34,7 @@ export default function Home() {
     <>
       <Seo
         title="Real Estate & Property Developers in Thanjavur"
-        description="VK Real Estate & Promoters develops residential plots, villas, apartments and commercial property in Thanjavur, Tamil Nadu. Building trust, creating futures."
+        description="VK Real Estate & Promoters develops and sells residential plots, agricultural land and houses in Thanjavur, Tamil Nadu. Building trust, creating futures."
         path="/"
       />
 

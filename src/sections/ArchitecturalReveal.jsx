@@ -1,12 +1,6 @@
 import { useRef } from "react";
-import {
-  motion,
-  useMotionTemplate,
-  useScroll,
-  useSpring,
-  useTransform,
-  useReducedMotion,
-} from "framer-motion";
+import { motion, useMotionTemplate, useScroll, useSpring, useTransform } from "framer-motion";
+import { useReducedMotion } from "../hooks/useReducedMotion";
 
 import Media from "../components/Media";
 import media from "../data/media";

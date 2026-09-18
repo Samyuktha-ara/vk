@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useReducedMotion } from "../hooks/useReducedMotion";
 import { ArrowUpRight } from "lucide-react";
 
 import Media from "../components/Media";
@@ -144,7 +145,7 @@ export default function Hero() {
             <span className={styles.spotlightLabel}>Now Developing</span>
             <span className={styles.spotlightName}>{spotlight.name}</span>
             <span className={styles.spotlightMeta}>
-              {spotlight.locality}, {spotlight.city}
+              {[spotlight.locality, spotlight.city].filter(Boolean).join(", ")}
             </span>
             <ArrowUpRight size={18} aria-hidden="true" />
           </Link>

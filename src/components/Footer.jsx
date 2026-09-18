@@ -29,8 +29,8 @@ export default function Footer() {
           </Link>
 
           <p className={styles.about}>
-            {business.brand.legalName} develops residential plots, villas,
-            apartments and commercial property in Thanjavur, Tamil Nadu — built
+            {business.brand.legalName} develops and sells residential plots,
+            agricultural land and houses in Thanjavur, Tamil Nadu — built
             around long-term value rather than the fastest possible sale.
           </p>
 

@@ -40,18 +40,18 @@
       />
     </noscript>
 
-    <!-- PLACEHOLDER IMAGERY: remove this preconnect once photography is
-         self-hosted from /src/assets. See src/data/media.js. -->
-    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <!-- Hero photograph — preloaded so the LCP image starts before React does.
+         Keep in sync with media.heroPrimary in src/data/media.js. -->
     <link
       rel="preload"
       as="image"
       fetchpriority="high"
-      href="https://images.unsplash.com/photo-1600585153490-76fb20a32601?auto=format&fit=crop&q=72&w=1600"
+      href="/photos/house-1-wide-1980.jpg"
       imagesrcset="
-        https://images.unsplash.com/photo-1600585153490-76fb20a32601?auto=format&fit=crop&q=72&w=960 960w,
-        https://images.unsplash.com/photo-1600585153490-76fb20a32601?auto=format&fit=crop&q=72&w=1280 1280w,
-        https://images.unsplash.com/photo-1600585153490-76fb20a32601?auto=format&fit=crop&q=72&w=1800 1800w"
+        /photos/house-1-wide-640.jpg 640w,
+        /photos/house-1-wide-960.jpg 960w,
+        /photos/house-1-wide-1280.jpg 1280w,
+        /photos/house-1-wide-1980.jpg 1980w"
       imagesizes="(max-width: 1024px) 100vw, 58vw"
     />
   </head>
@@ -64,7 +64,7 @@
         </h1>
         <p>
           This site needs JavaScript to run. Please call
-          <a href="tel:+919000000000">+91 90000 00000</a> or email
+          <a href="tel:+918015431488">+91 80154 31488</a> or email
           <a href="mailto:enquiries@vkestates.in">enquiries@vkestates.in</a> and
           we will send you project details directly.
         </p>

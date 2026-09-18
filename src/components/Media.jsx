@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { srcSetFor } from "../data/media";
 import styles from "./Media.module.css";
 
@@ -23,6 +23,13 @@ export default function Media({
   children,
 }) {
   const [loaded, setLoaded] = useState(false);
+
+  // Prerendered images can finish loading before React hydrates, in which
+  // case onLoad never fires. Catch that by checking the element on mount.
+  const imgRef = useCallback((node) => {
+    if (node?.complete && node.naturalWidth > 0) setLoaded(true);
+  }, []);
+
   if (!image) return null;
 
   const aspect = ratio ?? image.ratio ?? 3 / 2;
@@ -33,6 +40,7 @@ export default function Media({
       style={{ "--aspect": aspect }}
     >
       <img
+        ref={imgRef}
         src={image.src}
         srcSet={srcSetFor(image)}
         sizes={sizes}

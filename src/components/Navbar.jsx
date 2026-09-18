@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { useReducedMotion } from "../hooks/useReducedMotion";
 import { Phone, MessageCircle, ArrowUpRight } from "lucide-react";
 
 import Logo from "./Logo";

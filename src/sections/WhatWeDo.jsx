@@ -5,7 +5,7 @@ import styles from "./WhatWeDo.module.css";
 
 /**
  * What the company actually does — the answer a first-time visitor is looking
- * for, in four lines rather than four pages.
+ * for, in three lines rather than three pages.
  */
 const OFFERINGS = [
   {
@@ -15,18 +15,13 @@ const OFFERINGS = [
   },
   {
     index: "02",
-    title: "Villas",
-    body: "Independent houses on individually titled plots, planned around courtyards, shade and cross-ventilation. Built to a written specification, checked stage by stage.",
+    title: "Agricultural Land",
+    body: "Surveyed, clear-title farmland on the Cauvery delta, sold by the acre with water, road access and boundaries marked. Farm it, lease it, or hold it.",
   },
   {
     index: "03",
-    title: "Apartments",
-    body: "Low-rise blocks where every home has two external walls and a balcony deep enough to use. Smaller buildings, lower running costs, better-managed common areas.",
-  },
-  {
-    index: "04",
-    title: "Commercial",
-    body: "Retail frontage and flexible upper floors on the corridors that carry district traffic. Bought for the tenant it can hold, not the picture it makes.",
+    title: "Houses",
+    body: "Independent houses on individually titled plots, planned for shade and cross-ventilation. Built to a written specification, checked stage by stage — ready to move in.",
   },
 ];
 
@@ -44,7 +39,7 @@ export default function WhatWeDo() {
           id="services-heading"
           index="03"
           label="What We Do"
-          lines={["Four ways to own", "in Thanjavur."]}
+          lines={["Three ways to own", "in Thanjavur."]}
           standfirst="We develop and sell land and property across Thanjavur — and we will tell you plainly which of these suits what you are actually trying to do."
         />
 

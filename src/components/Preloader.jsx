@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { useReducedMotion } from "../hooks/useReducedMotion";
 
 import Logo from "./Logo";
 import { business } from "../data/business";
@@ -31,7 +32,9 @@ export default function Preloader() {
   const reduced = useReducedMotion();
 
   const [visible, setVisible] = useState(() => {
-    if (typeof window === "undefined") return false;
+    /* Prerendered HTML ships with the curtain in place so hydration matches;
+       the effect below lifts it once the real load signals arrive. */
+    if (typeof window === "undefined") return true;
     if (!SHOW_ONCE_PER_SESSION) return true;
     try {
       return window.sessionStorage.getItem(SESSION_KEY) !== "1";

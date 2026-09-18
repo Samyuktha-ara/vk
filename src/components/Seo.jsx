@@ -21,6 +21,7 @@ export default function Seo({
   const fullTitle = title?.includes(brand) ? title : `${title} | ${brand}`;
   const canonical = absoluteUrl(path);
   const ogImage = absoluteUrl(image ?? business.site.defaultOgImage);
+  const ogSize = image ? null : business.site.defaultOgImageSize;
 
   return (
     <>
@@ -37,8 +38,8 @@ export default function Seo({
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonical} />
       <meta property="og:image" content={ogImage} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
+      {ogSize && <meta property="og:image:width" content={String(ogSize.width)} />}
+      {ogSize && <meta property="og:image:height" content={String(ogSize.height)} />}
       <meta property="og:image:alt" content={fullTitle} />
 
       {/* X / Twitter */}

@@ -21,11 +21,11 @@ export default function FeaturedProjects() {
           index="04"
           label="Our Developments"
           lines={["Spaces worth", "coming home to."]}
-          standfirst="Ongoing, upcoming and delivered. We keep the finished ones here on purpose — a completed layout tells you more about a developer than a brochure ever will."
+          standfirst="What is on the market right now — completed houses ready to move into, and plots in a serviced layout. Prices are as quoted and slightly negotiable."
         />
 
-        {/* A compact grid rather than full-width rows: six developments should
-            be scannable in one screen, not six. */}
+        {/* A compact grid rather than full-width rows: the whole inventory
+            should be scannable in one screen. */}
         <div className={styles.grid}>
           {projects.map((project, index) => (
             <Reveal key={project.id} delay={(index % 3) * 0.07} amount={0.2}>
@@ -41,8 +41,8 @@ export default function FeaturedProjects() {
 
         <div className={styles.foot}>
           <p className={styles.footNote}>
-            Ask for any project&apos;s masterplan, specification, availability
-            and approval file — we will send the whole set.
+            Ask about any listing and we will send photographs, documents and
+            arrange a site visit.
           </p>
           <Button variant="outline" onClick={() => openEnquiry("")} arrow>
             Request Project Details

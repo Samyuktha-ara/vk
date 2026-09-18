@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { useReducedMotion } from "./hooks/useReducedMotion";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -21,9 +22,22 @@ const Privacy = lazy(() => import("./pages/Privacy"));
 const Terms = lazy(() => import("./pages/Terms"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
+/** Browser entry — the shell inside a history-backed router. */
 export default function App() {
   return (
     <BrowserRouter>
+      <AppShell />
+    </BrowserRouter>
+  );
+}
+
+/**
+ * Everything below the router. Exported separately so the prerender step can
+ * wrap it in a StaticRouter (see src/entry-server.jsx).
+ */
+export function AppShell() {
+  return (
+    <>
       <ChromeProvider>
         <Preloader />
         <ScrollToTop />
@@ -45,7 +59,7 @@ export default function App() {
         <WhatsAppFab />
         <InquiryModal />
       </ChromeProvider>
-    </BrowserRouter>
+    </>
   );
 }
 

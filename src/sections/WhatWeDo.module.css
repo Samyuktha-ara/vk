@@ -7,7 +7,7 @@
   --cell-y: clamp(1.5rem, 2.6vw, 2.25rem);
 
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;
   margin-top: clamp(2rem, 3.5vw, 3.5rem);
   border-top: 1px solid var(--line);
@@ -21,11 +21,11 @@
   border-bottom: 1px solid var(--line);
 }
 
-.item:nth-child(4n + 1) {
+.item:nth-child(3n + 1) {
   padding-left: 0;
 }
 
-.item:nth-child(4n) {
+.item:nth-child(3n) {
   padding-right: 0;
   border-right: 0;
 }
@@ -90,11 +90,11 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .item:nth-child(4n + 1) {
+  .item:nth-child(3n + 1) {
     padding-left: var(--cell-x);
   }
 
-  .item:nth-child(4n) {
+  .item:nth-child(3n) {
     padding-right: var(--cell-x);
     border-right: 1px solid var(--line);
   }
@@ -115,8 +115,8 @@
   }
 
   .item,
-  .item:nth-child(4n + 1),
-  .item:nth-child(4n),
+  .item:nth-child(3n + 1),
+  .item:nth-child(3n),
   .item:nth-child(2n + 1),
   .item:nth-child(2n) {
     padding-inline: 0;

@@ -243,6 +243,13 @@
   font-size: 1.05rem;
 }
 
+.priceNote {
+  margin: 0.6rem 0 0;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--ink-400);
+}
+
 /* ---- CTA ----------------------------------------------------------------- */
 
 .cta {

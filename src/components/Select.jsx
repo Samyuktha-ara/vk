@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { useReducedMotion } from "../hooks/useReducedMotion";
 import { Check } from "lucide-react";
 
 import styles from "./Select.module.css";
@@ -14,7 +15,7 @@ import styles from "./Select.module.css";
  *
  *   · ARIA listbox semantics with aria-activedescendant
  *   · Up/Down/Home/End to move, Enter/Space to choose, Esc to cancel
- *   · type-ahead — press "v" to jump to Villas
+ *   · type-ahead — press "h" to jump to Houses
  *   · click-outside and Tab both dismiss
  *   · focus returns to the trigger on close
  *   · collapses to a plain, legible control under reduced motion
